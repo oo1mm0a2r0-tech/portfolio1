@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Hazem | AI Automation Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --card: #16161f;
+    --border: #1e1e2e;
+    --accent: #7c6aff;
+    --accent2: #00d4aa;
+    --text: #e8e8f0;
+    --muted: #7070a0;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 20px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.3rem;
+    color: var(--white);
+  }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--accent);
+    color: var(--white) !important;
+    padding: 8px 20px; border-radius: 8px;
+  }
+  .nav-cta:hover { background: #6a58ee !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(124,106,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { max-width: 750px; position: relative; z-index: 1; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(124,106,255,0.1);
+    border: 1px solid rgba(124,106,255,0.3);
+    padding: 6px 16px; border-radius: 100px;
+    font-size: 0.8rem; color: var(--accent);
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .badge::before {
+    content: ''; width: 8px; height: 8px;
+    background: var(--accent2); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800; line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1 .highlight {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-desc {
+    font-size: 1.15rem; color: var(--muted);
+    line-height: 1.7; max-width: 560px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--accent); color: var(--white);
+    padding: 14px 32px; border-radius: 10px;
+    text-decoration: none; font-weight: 600;
+    font-size: 0.95rem; transition: all 0.3s;
+    box-shadow: 0 0 30px rgba(124,106,255,0.3);
+  }
+  .btn-primary:hover {
+    background: #6a58ee;
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(124,106,255,0.5);
+  }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--text);
+    padding: 14px 32px; border-radius: 10px;
+    text-decoration: none; font-weight: 500;
+    font-size: 0.95rem; transition: all 0.3s;
+  }
+  .btn-outline:hover {
+    border-color: var(--accent); color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .stats {
+    display: flex; gap: 48px; margin-top: 64px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem; font-weight: 800; color: var(--white);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+  .section-tag {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 800; color: var(--white);
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 500px; line-height: 1.7; }
+
+  /* SERVICES */
+  .services { background: var(--surface); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px; margin-top: 56px;
+  }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: rgba(124,106,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 20px;
+  }
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+  /* PORTFOLIO */
+  .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .project-img {
+    width: 100%; height: 220px; object-fit: cover;
+    display: block; background: var(--border);
+  }
+  .project-body { padding: 28px; }
+  .project-type {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 10px;
+  }
+  .project-body h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .project-body p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    background: rgba(124,106,255,0.1);
+    border: 1px solid rgba(124,106,255,0.2);
+    color: var(--accent); font-size: 0.75rem;
+    padding: 4px 12px; border-radius: 100px;
+  }
+
+  /* PROCESS */
+  .process { background: var(--surface); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px; margin-top: 56px; position: relative;
+  }
+  .step { text-align: center; position: relative; }
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem; font-weight: 800;
+    color: rgba(124,106,255,0.12);
+    margin-bottom: 16px;
+  }
+  .step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .step p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+
+  /* TOOLS */
+  .tools-grid {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-top: 48px;
+  }
+  .tool {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 10px 22px; border-radius: 100px;
+    font-size: 0.88rem; color: var(--muted);
+    transition: all 0.3s;
+  }
+  .tool:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* CONTACT */
+  .contact { background: var(--surface); text-align: center; }
+  .contact .section-sub { margin: 0 auto; }
+  .contact-links {
+    display: flex; gap: 20px; justify-content: center;
+    margin-top: 48px; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); text-decoration: none;
+    padding: 14px 28px; border-radius: 12px;
+    font-weight: 500; transition: all 0.3s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .contact-link svg { width: 20px; height: 20px; }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 60px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--muted); font-size: 0.85rem; flex-wrap: wrap; gap: 16px;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    section, .hero { padding: 80px 24px; }
+    footer { padding: 24px; }
+    .stats { gap: 28px; flex-wrap: wrap; }
+    .portfolio-header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Omar<span>.</span>Hazem</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">Available for freelance work</div>
+    <h1>AI Automation<br><span class="highlight">Specialist</span></h1>
+    <p class="hero-desc">
+      I help businesses save time and scale faster by automating their workflows using AI and n8n. Chatbots, API integrations, and fully automated business processes — built, tested, and delivered ready to use.
+    </p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="stats">
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Live Projects</div>
+      </div>
+      <div>
+        <div class="stat-num">$25</div>
+        <div class="stat-label">Hourly Rate</div>
+      </div>
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-tag">What I Do</div>
+  <div class="section-title">Services</div>
+  <p class="section-sub">End-to-end automation solutions that eliminate manual work and scale your business.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3>AI Chatbot Development</h3>
+      <p>Smart customer support bots powered by LLMs that handle inquiries 24/7 and log every conversation automatically.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>Workflow Automation</h3>
+      <p>End-to-end automation using n8n and Make.com — connect your apps, eliminate repetitive tasks, and run on autopilot.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔗</div>
+      <h3>API Integration</h3>
+      <p>Seamlessly connect any platforms via APIs — payments, CRMs, marketing tools, and custom webhooks.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📣</div>
+      <h3>Marketing Automation</h3>
+      <p>Automated lead generation, AI-written social media posts, and email outreach systems that work while you sleep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="section-tag">Real Projects</div>
+      <div class="section-title">Portfolio</div>
+    </div>
+    <p class="section-sub">Built with n8n, Groq AI, Telegram, and Google Sheets.</p>
+  </div>
+  <div class="portfolio-grid">
+
+    <div class="project-card">
+      <img src="https://i.postimg.cc/rsP7HPmV/j1.png" alt="Customer Support Chatbot" class="project-img">
+      <div class="project-body">
+        <div class="project-type">AI Chatbot</div>
+        <h3>Customer Support Chatbot</h3>
+        <p>An AI-powered Telegram bot that responds to customer messages intelligently using Groq LLM and logs every conversation to Google Sheets automatically.</p>
+        <div class="project-tags">
+          <span class="tag">n8n</span>
+          <span class="tag">Groq AI</span>
+          <span class="tag">Telegram</span>
+          <span class="tag">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://i.postimg.cc/63HP7mCG/j2.png" alt="Social Media Auto-Poster" class="project-img">
+      <div class="project-body">
+        <div class="project-type">Marketing Automation</div>
+        <h3>Social Media Auto-Poster</h3>
+        <p>Automated system that reads content topics from Google Sheets, uses AI to write professional LinkedIn and Twitter posts, and sends them for approval via Telegram daily.</p>
+        <div class="project-tags">
+          <span class="tag">n8n</span>
+          <span class="tag">Groq AI</span>
+          <span class="tag">Google Sheets</span>
+          <span class="tag">Telegram</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://i.postimg.cc/DznpxTgL/j3.png" alt="Invoice & Payment Automation" class="project-img">
+      <div class="project-body">
+        <div class="project-type">API Integration</div>
+        <h3>Invoice & Payment Automation</h3>
+        <p>Webhook-triggered system that captures payment data, generates AI-written confirmation emails, saves invoices to Google Sheets, and sends instant Telegram notifications.</p>
+        <div class="project-tags">
+          <span class="tag">Webhook</span>
+          <span class="tag">n8n</span>
+          <span class="tag">Groq AI</span>
+          <span class="tag">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-tag">How It Works</div>
+  <div class="section-title">My Process</div>
+  <p class="section-sub">Simple, transparent, and results-focused from day one.</p>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Discovery</h3>
+      <p>We discuss your workflow, pain points, and automation goals in detail.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Build</h3>
+      <p>I design and build the automation using n8n, AI models, and your existing tools.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Test</h3>
+      <p>Full testing with real data to ensure reliability and edge case handling.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Deliver</h3>
+      <p>You receive the complete workflow with documentation, ready to deploy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-tag">Tech Stack</div>
+  <div class="section-title">Tools & Technologies</div>
+  <div class="tools-grid">
+    <span class="tool">n8n</span>
+    <span class="tool">Make.com</span>
+    <span class="tool">Groq AI</span>
+    <span class="tool">OpenAI API</span>
+    <span class="tool">Claude API</span>
+    <span class="tool">Telegram Bot API</span>
+    <span class="tool">Google Sheets API</span>
+    <span class="tool">Gmail API</span>
+    <span class="tool">Webhooks</span>
+    <span class="tool">REST APIs</span>
+    <span class="tool">Apify</span>
+    <span class="tool">Zapier</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag">Let's Work Together</div>
+  <div class="section-title">Get In Touch</div>
+  <p class="section-sub">Ready to automate your business? Let's talk about your project.</p>
+  <div class="contact-links">
+    <a href="https://www.upwork.com" class="contact-link" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.142-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.452-5.439-5.452z"/></svg>
+      Upwork Profile
+    </a>
+    <a href="https://www.freelancer.com" class="contact-link" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 0l-4.4 12.6-3.2-5.2-5.8 5.8 4.8-13.2H24zM10.6 13.2L0 24l13.2-3.4-2.6-7.4z"/></svg>
+      Freelancer Profile
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Omar Hazem — AI Automation Specialist</div>
+  <div>Built with n8n · Groq AI · Passion</div>
+</footer>
+
+</body>
+</html>
